@@ -1,0 +1,9 @@
+server:
+  port: 8081
+  
+sample-company:
+  computerAssignedMaxSize: 3
+  notificationSendUrl : "http://localhost:8080/api/notify"
+
+
+
