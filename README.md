@@ -38,7 +38,7 @@ The notification is sent to the system administrator team using a messaging serv
   "message": "some message"
 }
 ```
-- **Note:** When I tried to use this command: ` docker pull greenbone/exercise-admin-notification` the docker threw an error that the image is incompatible with macbook pro m1 processors. So I cloned the [repository](https://github.com/greenbone/exercise-admin-notification), and built the image consistent with Mac m1 again.
+- **Note:** When I tried to use this command: ` docker pull greenbone/exercise-admin-notification` the docker threw an error that the image is incompatible with macbook pro m1 processors. So I cloned the [repository](https://github.com/greenbone/exercise-admin-notification), and built the image again which is consistent with Mac m1. 
 
 
 ## Prerequisites
@@ -55,8 +55,8 @@ Follow the steps below to build, test, and run the Spring Boot application.
 Clone the Git repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/samplecompany-computer.git
-cd samplecompany-computer/spring-boot
+git clone https://github.com/ozgen/sample-company.git
+cd sample-company
 ```
 ### 2. Build the Application
 Build the application using Maven:
