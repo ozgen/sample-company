@@ -36,6 +36,7 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Override
     public Computer createComputer(Computer computer) {
+        // check employeeAbbreviation is valid
         if (computer.getEmployeeAbbreviation() != null) {
             if (computer.getEmployeeAbbreviation().length() != 3) {
                 logger.error("Employee abbreviation is not valid  abbreviation : {}", computer.getEmployeeAbbreviation());
@@ -44,6 +45,7 @@ public class ComputerServiceImpl implements ComputerService {
                 computer.setEmployeeAbbreviation(computer.getEmployeeAbbreviation().toLowerCase());
             }
         }
+        //save computer
         Computer savedComputer = repository.save(computer);
         logger.info("{} of the computer is saved successfully.", savedComputer.getComputerName());
         return savedComputer;
@@ -51,6 +53,7 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Override
     public Computer updateComputer(String id, Computer computer) {
+        // check employeeAbbreviation is valid
         if (computer.getEmployeeAbbreviation() != null) {
             if (computer.getEmployeeAbbreviation().length() != 3) {
                 logger.error("Employee abbreviation is not valid  abbreviation : {}", computer.getEmployeeAbbreviation());
@@ -59,14 +62,17 @@ public class ComputerServiceImpl implements ComputerService {
                 computer.setEmployeeAbbreviation(computer.getEmployeeAbbreviation().toLowerCase());
             }
         }
+        //get existing computer from db
         Computer existing = repository.findById(id).orElseThrow(ComputerNotFoundException::new);
+        //update existing computer
         existing.setMacAddress(computer.getMacAddress());
         existing.setComputerName(computer.getComputerName());
         existing.setIpV4Address(computer.getIpV4Address());
         existing.setEmployeeAbbreviation(computer.getEmployeeAbbreviation());
         existing.setDescription(computer.getDescription());
+        //save computer
         Computer savedComputer = repository.save(existing);
-        logger.info("{} of the computer is updated successfully.", savedComputer.getComputerName());
+        logger.info("Id : {} of the computer is updated successfully.", savedComputer.getId());
         return savedComputer;
     }
 
@@ -77,6 +83,7 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Override
     public void deleteComputer(String id) {
+        // check the computer is existed
         Computer computer = repository.findById(id).orElseThrow(ComputerNotFoundException::new);
         repository.delete(computer);
         logger.info("computer is deleted successfully id: {}", id);
@@ -89,12 +96,14 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Override
     public void assignComputer(String computerId, String employeeAbbreviation) {
+        // check the computer is existed
         Computer computer = repository.findById(computerId).orElseThrow(ComputerNotFoundException::new);
         if (computer.getEmployeeAbbreviation() != null) {
 
             logger.error("This computer was already assigned : {}", computer.getEmployeeAbbreviation());
             throw new ComputerAlreadyAssignedException("This computer was already assigned!");
         }
+        // check employeeAbbreviation is valid
         if (employeeAbbreviation != null) {
             employeeAbbreviation = employeeAbbreviation.toLowerCase();
             if (employeeAbbreviation.length() != 3) {
@@ -102,8 +111,9 @@ public class ComputerServiceImpl implements ComputerService {
                 throw new InvalidAbbreviationException("Employee abbreviation should consists of 3 letters");
             } else {
                 computer.setEmployeeAbbreviation(employeeAbbreviation);
+                //save computer
                 repository.save(computer);
-                logger.error("Computer is assigned to employee : {} successfully", employeeAbbreviation);
+                logger.info("Computer is assigned to employee : {} successfully", employeeAbbreviation);
                 notifySystemAdmin(employeeAbbreviation);
             }
         }
@@ -111,10 +121,12 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Override
     public void unassignComputer(String id) {
+        // check the computer is existed
         Computer computer = repository.findById(id).orElseThrow(ComputerNotFoundException::new);
-        computer.setEmployeeAbbreviation(null);
+        computer.setEmployeeAbbreviation(null); //set employeeAbbreviation null
+        //save computer
         repository.save(computer);
-        logger.error("Computer is unassigned successfully id: {}", id);
+        logger.info("Computer is unassigned successfully id: {}", id);
 
     }
 
@@ -126,9 +138,12 @@ public class ComputerServiceImpl implements ComputerService {
     @Override
     public void notifySystemAdmin(String employeeAbbreviation) {
         Long count = repository.countComputerByEmployeeAbbreviation(employeeAbbreviation);
+        // check the counts of computers related employeeAbbreviation
         if (count >= computerAssignedMaxSize) {
             MaxAssignmentsReachedEvent event = new MaxAssignmentsReachedEvent(this, employeeAbbreviation);
+            // publish maxAssignmentsReachedEvent
             publisher.publishEvent(event);
+            logger.info("MaxAssignmentsReachedEvent is published successfully employeeAbbreviation: {}", employeeAbbreviation);
         }
     }
 

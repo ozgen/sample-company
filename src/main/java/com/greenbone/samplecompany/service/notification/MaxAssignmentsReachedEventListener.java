@@ -6,7 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MaxAssignmentsReachedEventListener implements ApplicationListener<MaxAssignmentsReachedEvent> {
-
+    /**
+     * MaxAssignmentsReachedEventListener is used for handling {@link MaxAssignmentsReachedEvent}.
+     * It listens for the event and triggers the notification process.
+     */
     private final NotificationService notificationService;
 
     public MaxAssignmentsReachedEventListener(NotificationService notificationService) {

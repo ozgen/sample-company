@@ -73,6 +73,7 @@ public class ComputerServiceTest {
         Computer computer = new Computer();
         computer.setComputerName("Test Computer");
         computer.setMacAddress("00:11:22:33:44:55");
+        computer.setIpV4Address("127.0.0.1");
         computer.setEmployeeAbbreviation("abcde"); // Invalid abbreviation
 
         // when and then
@@ -88,10 +89,12 @@ public class ComputerServiceTest {
         existingComputer.setId(computerId);
         existingComputer.setComputerName("Old Computer");
         existingComputer.setMacAddress("00:11:22:33:44:55");
+        existingComputer.setIpV4Address("127.0.0.1");
 
         Computer updatedComputer = new Computer();
         updatedComputer.setComputerName("New Computer");
         updatedComputer.setMacAddress("11:22:33:44:55:66");
+        updatedComputer.setIpV4Address("127.0.0.1");
 
         when(repository.findById(computerId)).thenReturn(Optional.of(existingComputer));
         when(repository.save(any(Computer.class))).thenReturn(updatedComputer);
@@ -105,6 +108,7 @@ public class ComputerServiceTest {
         assertEquals(updatedComputer, savedComputer);
         assertEquals(updatedComputer.getComputerName(), existingComputer.getComputerName());
         assertEquals(updatedComputer.getMacAddress(), existingComputer.getMacAddress());
+        assertEquals(updatedComputer.getIpV4Address(), existingComputer.getIpV4Address());
     }
 
     @Test
@@ -114,6 +118,7 @@ public class ComputerServiceTest {
         Computer updatedComputer = new Computer();
         updatedComputer.setComputerName("New Computer");
         updatedComputer.setMacAddress("11:22:33:44:55:66");
+        updatedComputer.setIpV4Address("127.0.0.1");
 
         when(repository.findById(computerId)).thenReturn(Optional.empty());
 
