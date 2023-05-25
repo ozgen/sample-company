@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "941cec92-860e-47aa-af08-0ba3c77c4957",
+		"name": "greenbone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3440979"
+	},
+	"item": [
+		{
+			"name": "CreateComputer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"computerName\": \"test\",\n  \"ipV4Address\": \"127.0.0.1\",\n  \"macAddress\": \"00:00:0a:00:00:aa\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/computer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"computer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateComputer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"computerName\": \"test\",\n  \"ipV4Address\": \"127.0.0.1\",\n  \"macAddress\": \"00:00:0a:00:00:aa\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/computer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"computer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetComputers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"computerName\": \"test\",\n  \"ipV4Address\": \"127.0.0.1\",\n  \"macAddress\": \"00:00:0a:00:00:aa\",\n    \"employeeAbbreviation\": \"abc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/computer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"computer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssignComputer",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"computerName\": \"test\",\n  \"ipV4Address\": \"127.0.0.1\",\n  \"macAddress\": \"00:00:0a:00:00:aa\",\n    \"employeeAbbreviation\": \"abc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/computer/d2ec8da8-c3f7-4c30-9cc3-2c9f316cc5f1/abc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"computer",
+						"d2ec8da8-c3f7-4c30-9cc3-2c9f316cc5f1",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnassignComputer",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"computerName\": \"test\",\n  \"ipV4Address\": \"127.0.0.1\",\n  \"macAddress\": \"00:00:0a:00:00:aa\",\n    \"employeeAbbreviation\": \"abc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/computer/d2ec8da8-c3f7-4c30-9cc3-2c9f316cc5f1/abc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"computer",
+						"d2ec8da8-c3f7-4c30-9cc3-2c9f316cc5f1",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteComputer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"computerName\": \"test\",\n  \"ipV4Address\": \"127.0.0.1\",\n  \"macAddress\": \"00:00:0a:00:00:aa\",\n    \"employeeAbbreviation\": \"abc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/computer/4e595cb8-7640-4acb-836c-b6da59cdd04b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"computer",
+						"4e595cb8-7640-4acb-836c-b6da59cdd04b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetComputer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"computerName\": \"test\",\n  \"ipV4Address\": \"127.0.0.1\",\n  \"macAddress\": \"00:00:0a:00:00:aa\",\n    \"employeeAbbreviation\": \"abc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/computer/1915e774-4310-4e85-b4a8-c2f97bbf4183",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"computer",
+						"1915e774-4310-4e85-b4a8-c2f97bbf4183"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAssignedComputers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"computerName\": \"test\",\n  \"ipV4Address\": \"127.0.0.1\",\n  \"macAddress\": \"00:00:0a:00:00:aa\",\n    \"employeeAbbreviation\": \"abc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/computer/1915e774-4310-4e85-b4a8-c2f97bbf4183",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"computer",
+						"1915e774-4310-4e85-b4a8-c2f97bbf4183"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testAlarm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"level\": \"warning\",\n        \"employeeAbbreviation\": \"mmu\",\n        \"message\": \"some message\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/notify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notify"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

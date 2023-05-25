@@ -25,7 +25,7 @@ The following REST endpoints are available:
 
 ## Event Notification
 
-The application uses Spring's Application Event mechanism to send notifications to the system administrator when an employee is assigned 3 or more computers. When assigning a computer to an employee, an internal event is triggered. The event carries the necessary information such as the employee's abbreviation and the number of computers assigned.
+The application uses Spring's Application Event mechanism to send notifications to the system administrator when an employee is assigned 3 or more computers. When assigning a computer to an employee, an internal event is triggered. The event carries the necessary information such as the employee's abbreviation.
 
 The `MaxAssignmentsReachedEvent` class represents this event and is automatically published by the application. The event is then handled by the `MaxAssignmentsReachedEventListener`, which listens for the event and triggers the notification process.
 
@@ -82,9 +82,17 @@ Run the tests to verify the functionality of the application:
 mvn test 
 ```
 
-### 5. Additional Notes and Improvements
+### 5. Test the Application with Postman
 
-- **Database Configuration**: By default, this application uses an in-memory H2 database. For a production-ready setup, consider configuring a different database like MySQL, PostgreSQL, or Oracle. Update the database configuration in the `application.yml` file.
+- Download the Postman application from the official website and install it on your machine.
+- Launch Postman and click on the "Import" button located in the top-left corner of the application.
+- Choose the "Import From File" option and browse for the downloaded [greenbone.postman_collection.json](greenbone.postman_collection.json).
+- Select the file and click "Open" to import the collection into Postman.
+- The imported collection will now appear in the Postman workspace.
+
+### 6. Additional Notes and Improvements
+
+- **Database Configuration**: By default, this application uses an in-memory H2 database. For a production-ready setup, consider configuring a different database like MySQL, PostgreSQL, or Oracle. Update the database configuration in the `application.yaml` file.
 
 - **Security**: In a real-world scenario, it would be important to implement security measures such as authentication and authorization to protect the REST endpoints and ensure data confidentiality. Consider using Spring Security to add these features.
 

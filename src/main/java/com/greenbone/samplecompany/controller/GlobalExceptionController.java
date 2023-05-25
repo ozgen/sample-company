@@ -25,7 +25,7 @@ public class GlobalExceptionController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ComputerNotFoundException.class)
     public String handleNotFoundException() {
-        logger.warn("Entity not found");
+        logger.warn("Computer not found");
         return "Computer not found";
     }
 
@@ -41,7 +41,7 @@ public class GlobalExceptionController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        logger.warn("Data is not valid", e);
+        logger.warn("Computer is not valid", e);
         Map<String, String> errors = new HashMap<>();
         e.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();

@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -121,7 +122,7 @@ public class ComputerControllerTest {
                 .andExpect(status().is4xxClientError()).andReturn();
         // then
         int status = mvcResult.getResponse().getStatus();
-        assertEquals(400, status);
+        assertEquals(HttpStatus.BAD_REQUEST.value(), status);
     }
 
 
@@ -161,7 +162,7 @@ public class ComputerControllerTest {
                 .andExpect(status().isNotFound()).andReturn();
         // then
         int status = mvcResult.getResponse().getStatus();
-        assertEquals(404, status);
+        assertEquals(HttpStatus.NOT_FOUND.value(), status);
     }
 
 
@@ -207,7 +208,7 @@ public class ComputerControllerTest {
                 .andExpect(status().isNotFound()).andReturn();
         // then
         int status = mvcResult.getResponse().getStatus();
-        assertEquals(404, status);
+        assertEquals(HttpStatus.NOT_FOUND.value(), status);
     }
 
     @Test
@@ -228,7 +229,7 @@ public class ComputerControllerTest {
                 .andExpect(status().is4xxClientError()).andReturn();
         // then
         int status = mvcResult.getResponse().getStatus();
-        assertEquals(400, status);
+        assertEquals(HttpStatus.BAD_REQUEST.value(), status);
     }
 
     @Test
@@ -254,7 +255,7 @@ public class ComputerControllerTest {
                 .andExpect(status().isNotFound()).andReturn();
         // then
         int status = mvcResult.getResponse().getStatus();
-        assertEquals(404, status);
+        assertEquals(HttpStatus.NOT_FOUND.value(), status);
     }
 
     @Test
