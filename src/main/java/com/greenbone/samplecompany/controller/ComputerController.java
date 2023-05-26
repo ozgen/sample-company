@@ -53,6 +53,7 @@ public class ComputerController {
         service.deleteComputer(id);
     }
 
+    //https://stackoverflow.com/questions/24241893/should-i-use-patch-or-put-in-my-rest-api
     @PatchMapping("/{id}/{abbreviation}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void assignComputer(@PathVariable String id, @PathVariable String abbreviation) {

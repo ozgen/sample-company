@@ -23,21 +23,20 @@ public interface ComputerService {
     /**
      * Retrieves the computer to the h2 database with given id
      * @param id of the computer
-     * @return Computer {@link Computer} persisted object
+     * @return Computer {@link Computer}
      */
     public Computer getComputer(String id);
 
     /**
      * Deletes the computer to the h2 database with given id
      * @param id of the computer
-     * @return Computer {@link Computer} persisted object
      */
     public void deleteComputer(String id);
 
     /**
      * Retrieves all computers from the h2 database
      *
-     * @return List of computers {@link Computer} persisted object
+     * @return List of computers {@link Computer}
      */
     public List<Computer> getComputers();
 

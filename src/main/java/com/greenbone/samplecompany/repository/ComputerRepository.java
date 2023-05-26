@@ -20,7 +20,7 @@ public interface ComputerRepository extends JpaRepository<Computer, String> {
      * Returns the counts of assigned computer of the employee
      *
      * @param employeeAbbreviation of the employee
-     * @return List of computers {@link Computer}
+     * @return counts of computers related abbreviation {@link Computer}
      */
     Long countComputerByEmployeeAbbreviation(String employeeAbbreviation);
 }
