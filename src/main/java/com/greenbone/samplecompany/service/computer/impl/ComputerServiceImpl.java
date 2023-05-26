@@ -36,15 +36,8 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Override
     public Computer createComputer(Computer computer) {
-        // check employeeAbbreviation is valid
-        if (computer.getEmployeeAbbreviation() != null) {
-            if (computer.getEmployeeAbbreviation().length() != 3) {
-                logger.error("Employee abbreviation is not valid  abbreviation : {}", computer.getEmployeeAbbreviation());
-                throw new InvalidAbbreviationException("Employee abbreviation should consists of 3 letters ");
-            } else {
-                computer.setEmployeeAbbreviation(computer.getEmployeeAbbreviation().toLowerCase());
-            }
-        }
+        //set abbreviation null, abbreviation is only updated in assignComputer method.
+        computer.setEmployeeAbbreviation(null);
         //save computer
         Computer savedComputer = repository.save(computer);
         logger.info("{} of the computer is saved successfully.", savedComputer.getComputerName());
@@ -53,22 +46,14 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Override
     public Computer updateComputer(String id, Computer computer) {
-        // check employeeAbbreviation is valid
-        if (computer.getEmployeeAbbreviation() != null) {
-            if (computer.getEmployeeAbbreviation().length() != 3) {
-                logger.error("Employee abbreviation is not valid  abbreviation : {}", computer.getEmployeeAbbreviation());
-                throw new InvalidAbbreviationException("Employee abbreviation should consists of 3 letters ");
-            } else {
-                computer.setEmployeeAbbreviation(computer.getEmployeeAbbreviation().toLowerCase());
-            }
-        }
+
         //get existing computer from db
         Computer existing = repository.findById(id).orElseThrow(ComputerNotFoundException::new);
         //update existing computer
         existing.setMacAddress(computer.getMacAddress());
         existing.setComputerName(computer.getComputerName());
         existing.setIpV4Address(computer.getIpV4Address());
-        existing.setEmployeeAbbreviation(computer.getEmployeeAbbreviation());
+        existing.setEmployeeAbbreviation(null); // set abbreviation null
         existing.setDescription(computer.getDescription());
         //save computer
         Computer savedComputer = repository.save(existing);
