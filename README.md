@@ -96,7 +96,9 @@ mvn test
 
 - **Security**: In a real-world scenario, it would be important to implement security measures such as authentication and authorization to protect the REST endpoints and ensure data confidentiality. Consider using Spring Security to add these features.
 
-- **API Documentation**: Generate API documentation using tools like Springfox or Spring RestDocs to provide an interactive and descriptive API reference. Include the generated documentation in the README or publish it separately.
+- **Dependency Vulnerability Check**: Regularly checking for known vulnerabilities in the project's dependencies is crucial for maintaining a secure application. Consider using tools like the OWASP Dependency-Check to perform automated vulnerability checks on your project's dependencies. Integrating this check into your CI/CD pipeline ensures that vulnerabilities are identified and addressed early in the development process.
+
+- **API Documentation**: Improve the documentation of the API endpoints by using tools like Swagger or Spring RestDocs. These tools help generate comprehensive API documentation, including endpoint descriptions, request/response examples, and possible error scenarios. Well-documented APIs facilitate easier integration and understanding of the application by other developers or consumers.
 
 - **Containerization**: Dockerize the application to enable easy deployment and scalability. Create a Dockerfile and docker-compose.yml file to define the container environment and dependencies. Additionally, integrate the application with Kubernetes for container orchestration. Create Kubernetes deployment and service files to deploy and manage the application in a Kubernetes cluster.
 
