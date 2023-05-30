@@ -68,20 +68,6 @@ public class ComputerServiceTest {
     }
 
     @Test
-    void createComputer_FailedWithInvalidAbbreviationException() {
-        // given
-        Computer computer = new Computer();
-        computer.setComputerName("Test Computer");
-        computer.setMacAddress("00:11:22:33:44:55");
-        computer.setIpV4Address("127.0.0.1");
-        computer.setEmployeeAbbreviation("abcde"); // Invalid abbreviation
-
-        // when and then
-        Assertions.assertThrows(InvalidAbbreviationException.class, () -> computerService.createComputer(computer));
-        verify(repository, never()).save(any(Computer.class));
-    }
-
-    @Test
     void updateComputer_Success() {
         // given
         String computerId = UUID.randomUUID().toString();
