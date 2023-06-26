@@ -1,6 +1,8 @@
 package com.greenbone.samplecompany.model.data;
 
 
+import com.greenbone.samplecompany.util.ComputerUtils;
+import com.greenbone.samplecompany.util.PatternName;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -9,8 +11,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import static com.greenbone.samplecompany.util.ComputerUtils.IPV4_PATTERN;
-import static com.greenbone.samplecompany.util.ComputerUtils.MAC_PATTERN;
+
 
 @Entity
 public class Computer {
@@ -22,13 +23,13 @@ public class Computer {
     private String id;
 
     @NotNull(message = "Mac Address cannot be null")
-    @Pattern(regexp = MAC_PATTERN,
+    @Pattern(regexp = ComputerUtils.MAC_PATTERN,
             message = "Mac address should be valid as : 00:00:0a:00:00:aa")
     private String macAddress;
     @NotNull(message = "Computer name cannot be null")
     private String computerName;
     @NotNull(message = "IPV4 address cannot be null")
-    @Pattern(regexp = IPV4_PATTERN,
+    @Pattern(regexp = ComputerUtils.IPV4_PATTERN,
             message = "IPv4 address should be valid as : 255.255.255.255")
     private String ipV4Address;
     private String employeeAbbreviation;
