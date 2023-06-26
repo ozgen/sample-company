@@ -81,6 +81,7 @@ public class ComputerServiceTest {
         updatedComputer.setComputerName("New Computer");
         updatedComputer.setMacAddress("11:22:33:44:55:66");
         updatedComputer.setIpV4Address("127.0.0.1");
+        updatedComputer.setEmployeeAbbreviation("AAA");
 
         when(repository.findById(computerId)).thenReturn(Optional.of(existingComputer));
         when(repository.save(any(Computer.class))).thenReturn(updatedComputer);
@@ -95,6 +96,7 @@ public class ComputerServiceTest {
         assertEquals(updatedComputer.getComputerName(), existingComputer.getComputerName());
         assertEquals(updatedComputer.getMacAddress(), existingComputer.getMacAddress());
         assertEquals(updatedComputer.getIpV4Address(), existingComputer.getIpV4Address());
+        assertEquals(updatedComputer.getEmployeeAbbreviation(), "aaa");
     }
 
     @Test
@@ -110,6 +112,20 @@ public class ComputerServiceTest {
 
         // when and then
         Assertions.assertThrows(ComputerNotFoundException.class, () -> computerService.updateComputer(computerId, updatedComputer));
+        verify(repository, never()).save(any(Computer.class));
+    }
+    @Test
+    void updateComputer_FailedWithComputerInvalidAbbraviatonException() {
+        // given
+        String computerId = UUID.randomUUID().toString();
+        Computer updatedComputer = new Computer();
+        updatedComputer.setComputerName("New Computer");
+        updatedComputer.setMacAddress("11:22:33:44:55:66");
+        updatedComputer.setIpV4Address("127.0.0.1");
+        updatedComputer.setEmployeeAbbreviation("aaaa");
+
+        // when and then
+        Assertions.assertThrows(InvalidAbbreviationException.class, () -> computerService.updateComputer(computerId, updatedComputer));
         verify(repository, never()).save(any(Computer.class));
     }
 
